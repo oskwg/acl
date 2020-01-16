@@ -27,11 +27,6 @@
             <artifactId>netty-all</artifactId>
             <version>4.1.45.Final</version>
         </dependency>
-        <dependency>
-            <groupId>org.oskwork.acl</groupId>
-            <artifactId>acl-common</artifactId>
-            <version>${project.version}</version>
-        </dependency>
     </dependencies>
 
 </project>

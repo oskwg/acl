@@ -11,4 +11,11 @@
 
     <artifactId>acl-server</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.oskwork.acl</groupId>
+            <artifactId>acl-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
 </project>
