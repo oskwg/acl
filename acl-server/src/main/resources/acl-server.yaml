@@ -3,4 +3,4 @@ client:
 
 
 server:
-  port:
+  port: 1223
