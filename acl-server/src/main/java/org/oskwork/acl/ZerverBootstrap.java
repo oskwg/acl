@@ -8,6 +8,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.serialization.ObjectDecoder;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
+import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.stream.ChunkedWriteHandler;
 import org.oskwork.acl.handler.InDataStream;
@@ -25,6 +26,7 @@ public class ZerverBootstrap {
 
        try {
            ServerBootstrap b = new ServerBootstrap();
+           b.handler(new LoggingHandler(LogLevel.DEBUG));
            b.group(bossGroup, workerGroup)
                    .channel(NioServerSocketChannel.class)
                    .childHandler(new ChannelInitializer<SocketChannel>() {
@@ -33,6 +35,7 @@ public class ZerverBootstrap {
                        protected void initChannel(SocketChannel socketChannel) throws Exception {
                            ChannelPipeline pipeline = socketChannel.pipeline();
 
+                           pipeline.addLast(new LoggingHandler(LogLevel.DEBUG));
                            pipeline.addLast(new ChunkedWriteHandler());
 //                           pipeline.addLast(new StringEncoder());
                            pipeline.addLast(new InDataStream());
